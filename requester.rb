@@ -13,8 +13,9 @@ module Requester
   def ask_save_score
     show_score
     puts "--------------------------------------------------"
-    print "Do you want to save your score? y/n "
-    gets.chomp.strip.downcase
+    prompt = "Do you want to save your score? y/n "
+    options = %w[y n]
+    gets_option(prompt, options)
   end
 
   def select_category

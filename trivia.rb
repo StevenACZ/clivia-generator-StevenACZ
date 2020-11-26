@@ -45,7 +45,6 @@ module Trivia
   def parse_questions(category: nil, difficulty: nil)
     coder = HTMLEntities.new
     @trivias = TriviaController.index(category: category, difficulty: difficulty)
-    p @trivias
     @trivias.map! do |trivia|
       {
         category: coder.decode(trivia[:category]),
