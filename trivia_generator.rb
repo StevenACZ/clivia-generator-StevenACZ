@@ -17,7 +17,7 @@ class TriviaGenerator
   def start
     until print_welcome
       parse_scores
-      action, _id = select_main_menu_action
+      action = select_main_menu_action
       case action
       when "random" then random_trivia
       when "scores" then print_scores

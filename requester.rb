@@ -24,12 +24,12 @@ module Requester
   def gets_option(prompt, options)
     puts prompt
     print "> "
-    input = gets.chomp.split.map(&:strip)
+    input = gets.chomp.strip
 
-    until options.include?(input[0])
+    until options.include?(input)
       puts "Invalid option"
       print "> "
-      input = gets.chomp.split.map(&:strip)
+      input = gets.chomp.strip
     end
     input
   end
