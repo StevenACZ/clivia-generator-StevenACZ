@@ -18,11 +18,16 @@ class TriviaGenerator
     until print_welcome
       parse_scores
       action = select_main_menu_action
-      case action
-      when "random" then random_trivia
-      when "custom" then custom_trivia
-      when "scores" then print_scores
-      when "exit" then break
+      begin
+        case action
+        when "random" then random_trivia
+        when "custom" then custom_trivia
+        when "scores" then print_scores
+        when "exit" then break
+        end
+      rescue Net::HTTPError => e
+        puts e.response.parsed_response
+        puts
       end
     end
   end

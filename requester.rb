@@ -2,7 +2,7 @@ module Requester
   def select_main_menu_action
     prompt = "random | custom | scores | exit"
     options = %w[random custom scores exit]
-    gets_option(prompt, options)
+    gets_option(prompt: prompt, options: options)
   end
 
   def ask_name_to_assign_score
@@ -15,25 +15,28 @@ module Requester
     puts "--------------------------------------------------"
     prompt = "Do you want to save your score? y/n "
     options = %w[y n]
-    gets_option(prompt, options)
+    gets_option(prompt: prompt, options: options)
   end
 
   def select_category
-    puts "select a category id (between 9 and 32)"
-    gets.chomp.strip
+    prompt = "select a category id (between 9 and 32)"
+    options = (1..32).to_a.map(&:to_s)
+    gets_option(prompt: prompt, options: options)
   end
 
   def select_difficulty
-    puts "select a difficulty (easy, medium or hard)"
-    gets.chomp.strip
+    prompt = "select a difficulty (easy, medium or hard)"
+    options = %w[easy medium hard]
+    gets_option(prompt: prompt, options: options)
   end
 
   def get_number(max: 100_000)
-    # prompt the user for a number between 1 and the maximum number of options
+    options = (1..max).to_a.map(&:to_s)
+    gets_option(options: options)
   end
 
-  def gets_option(prompt, options)
-    puts prompt
+  def gets_option(prompt: nil, options: nil)
+    puts prompt unless prompt.nil?
     print "> "
     input = gets.chomp.strip
 

@@ -60,7 +60,8 @@ module Trivia
   def load_questions
     @trivias.each do |trivia|
       print_question(trivia)
-      answer = gets.chomp.strip
+      answer = get_number(max: trivia[:incorrect_answers].size)
+
       ask_question(trivia[:incorrect_answers][answer.to_i - 1], trivia[:correct_answer])
     end
   end
