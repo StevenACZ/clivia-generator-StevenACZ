@@ -11,6 +11,18 @@ module Trivia
     will_save?
   end
 
+  def custom_trivia
+    category = select_category
+    difficulty = select_difficulty
+
+    parse_questions(category: category, difficulty: difficulty)
+    @score = 0
+
+    load_questions
+
+    will_save?
+  end
+
   private
 
   def will_save?
@@ -30,9 +42,10 @@ module Trivia
     export_scores(data)
   end
 
-  def parse_questions
+  def parse_questions(category: nil, difficulty: nil)
     coder = HTMLEntities.new
-    @trivias = TriviaController.index
+    @trivias = TriviaController.index(category: category, difficulty: difficulty)
+    p @trivias
     @trivias.map! do |trivia|
       {
         category: coder.decode(trivia[:category]),

@@ -20,6 +20,7 @@ class TriviaGenerator
       action = select_main_menu_action
       case action
       when "random" then random_trivia
+      when "custom" then custom_trivia
       when "scores" then print_scores
       when "exit" then break
       end

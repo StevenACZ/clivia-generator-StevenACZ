@@ -1,7 +1,7 @@
 module Requester
   def select_main_menu_action
-    prompt = "random | scores | exit"
-    options = %w[random scores exit]
+    prompt = "random | custom | scores | exit"
+    options = %w[random custom scores exit]
     gets_option(prompt, options)
   end
 
@@ -15,6 +15,16 @@ module Requester
     puts "--------------------------------------------------"
     print "Do you want to save your score? y/n "
     gets.chomp.strip.downcase
+  end
+
+  def select_category
+    puts "select a category id (between 9 and 32)"
+    gets.chomp.strip
+  end
+
+  def select_difficulty
+    puts "select a difficulty (easy, medium or hard)"
+    gets.chomp.strip
   end
 
   def get_number(max: 100_000)
