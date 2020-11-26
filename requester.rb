@@ -1,12 +1,12 @@
 module Requester
   def select_main_menu_action
     prompt = "random | scores | exit"
-    options = ["random", "scores", "exit"]
+    options = %w[random scores exit]
     gets_option(prompt, options)
   end
 
   def ask_name_to_assign_score
-    puts "Type the name to assign to the score"      
+    puts "Type the name to assign to the score"
     gets.chomp.strip
   end
 

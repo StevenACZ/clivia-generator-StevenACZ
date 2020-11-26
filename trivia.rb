@@ -1,4 +1,4 @@
-require_relative "trivia_controller.rb"
+require_relative "trivia_controller"
 require "htmlentities"
 
 module Trivia
@@ -10,7 +10,7 @@ module Trivia
 
     will_save?
   end
-  
+
   private
 
   def will_save?
@@ -21,10 +21,10 @@ module Trivia
   def save_player
     name = ask_name_to_assign_score
     name = name.empty? ? "Anonymous" : name
-    data = { :name => name, :score => @score }
+    data = { name: name, score: @score }
     save(data)
   end
-  
+
   def save(data)
     parse_scores
     export_scores(data)
@@ -35,12 +35,12 @@ module Trivia
     @trivias = TriviaController.index
     @trivias.map! do |trivia|
       {
-        :category => coder.decode(trivia[:category]),
-        :type => coder.decode(trivia[:type]),
-        :difficulty => coder.decode(trivia[:difficulty]),
-        :question => coder.decode(trivia[:question]),
-        :correct_answer => coder.decode(trivia[:correct_answer]),
-        :incorrect_answers => trivia[:incorrect_answers].map { |incorrect_answer| coder.decode(incorrect_answer) }
+        category: coder.decode(trivia[:category]),
+        type: coder.decode(trivia[:type]),
+        difficulty: coder.decode(trivia[:difficulty]),
+        question: coder.decode(trivia[:question]),
+        correct_answer: coder.decode(trivia[:correct_answer]),
+        incorrect_answers: trivia[:incorrect_answers].map { |incorrect_answer| coder.decode(incorrect_answer) }
       }
     end
   end

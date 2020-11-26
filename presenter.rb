@@ -11,7 +11,7 @@ module Presenter
     trivia[:incorrect_answers] = trivia[:incorrect_answers].push(trivia[:correct_answer]).shuffle
     puts "Category: #{trivia[:category]} | Difficulty: #{trivia[:difficulty]}"
     puts "Question: #{trivia[:question]}"
-    trivia[:incorrect_answers].each_with_index  do |incorrect_answer, index|
+    trivia[:incorrect_answers].each_with_index do |incorrect_answer, index|
       puts "#{index + 1}. #{incorrect_answer}"
     end
   end
